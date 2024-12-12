@@ -1,24 +1,21 @@
-from playwright.sync_api import Playwright, sync_playwright, expect
+# from pages.login_page import LoginPage
+from pages.login_page import LoginPage
+
+from playwright.sync_api import sync_playwright
 
 
-def ex_test(playwright: Playwright) -> None:
-    browser = playwright.chromium.launch(headless=False)
-    # Создаём новый контекст браузера (это изолированная сессия)
-    context = browser.new_context()
-    # Открываем новую вкладку
-    page = context.new_page()
-    page.goto("https://www.saucedemo.com/")
+def test_login():
+    with sync_playwright() as playwright:
+        browser = playwright.chromium.launch(headless=False)
+        # Создаём новый контекст браузера (это изолированная сессия)
+        context = browser.new_context()
+        # Открываем новую вкладку
+        page = context.new_page()
+        login_page = LoginPage(page)
+        login_page.navigate_to("https://www.saucedemo.com/")
+        login_page.login("standard_user", "secret_sauce")
 
-    page.locator('[data-test="username"]').click()
-    page.locator('[data-test="username"]').fill("standard_user")
-    page.locator('[data-test="password"]').click()
-    page.locator('[data-test="password"]').fill("secret_sauce")
-    page.locator('[data-test="login-button"]').click()
-    expect(page.locator('[data-test="title"]')).to_be_visible()
+        assert login_page.is_login_successful(), "Не удалось авторизоваться!"
 
-    context.close()
-    browser.close()
-
-
-with sync_playwright() as playwright:
-    ex_test(playwright)
+        context.close()
+        browser.close()
