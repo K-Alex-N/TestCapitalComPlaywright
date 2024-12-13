@@ -1,12 +1,16 @@
+import allure
+from allure import step
 from playwright.sync_api import Page
 
 class BasePage:
     def __init__(self, page: Page):
         self.page = page
 
+    # @step(f"Navigate to URL: {url}")
     def navigate_to(self, url: str):
         """Переход на указанный URL."""
-        self.page.goto(url)
+        with allure.step(f"Navigate to URL: {url}"):
+            self.page.goto(url)
 
     def click(self, selector: str):
         """Клик по элементу."""
