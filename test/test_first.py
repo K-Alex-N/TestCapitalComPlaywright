@@ -2,7 +2,6 @@ from pages.login_page import LoginPage
 import allure
 
 
-@allure.title("Test Login Functionality")
 @allure.description("This test verifies that a user can successfully log in to the application.")
 @allure.epic("UI Tests")
 @allure.feature("Login")
