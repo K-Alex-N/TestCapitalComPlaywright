@@ -2,6 +2,7 @@ import pytest
 from playwright.sync_api import sync_playwright
 
 BROWSERS = ["chromium", "firefox", "webkit"]
+# BROWSERS = ["chromium"]
 
 @pytest.fixture(scope="function", params=BROWSERS)
 def browser_context(request):
