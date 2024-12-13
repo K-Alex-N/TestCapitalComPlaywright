@@ -1,5 +1,4 @@
 import allure
-from allure import step
 from playwright.sync_api import Page
 
 class BasePage:
