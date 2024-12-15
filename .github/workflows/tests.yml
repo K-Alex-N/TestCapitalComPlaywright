@@ -23,6 +23,9 @@ jobs:
       - name: install dependencies
         run: poetry install
 
+      - name: run playwright
+        run: poetry run playwright install
+
       - name: run tests
         run: poetry run pytest
 
