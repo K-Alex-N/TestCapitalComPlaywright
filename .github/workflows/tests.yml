@@ -11,12 +11,21 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: install python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '^3.12'
+
       - name: install poetry
         run: pip3 install poetry
+
       - name: install dependencies
         run: poetry install
+
       - name: run tests
         run: poetry run pytest
+
 #  allure-report:
 #    needs: [tests]
 #      -
