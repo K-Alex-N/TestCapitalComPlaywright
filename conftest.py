@@ -3,7 +3,7 @@ from playwright.sync_api import sync_playwright
 
 BROWSERS = ["chromium",
             "firefox",
-            # "webkit"
+            "webkit"
             ]
 
 @pytest.fixture(scope="function", params=BROWSERS)
