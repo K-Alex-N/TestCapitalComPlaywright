@@ -81,7 +81,7 @@ jobs:
     name: II. Generate & Deploy Allure report
     runs-on: ubuntu-latest
     if: always()
-    needs: [ tests ]
+    needs: [ setup_and_test ]
 
     steps:
       - name: 1. Get Allure history
