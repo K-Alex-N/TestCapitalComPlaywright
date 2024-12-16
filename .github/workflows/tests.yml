@@ -17,8 +17,8 @@ jobs:
         with:
           python-version: '^3.12'
 
-      - name: upgrade pip
-        run: python -m pip install --upgrade pip
+#      - name: upgrade pip
+#        run: python -m pip install --upgrade pip
 
       - name: install pipx
         run: |
@@ -28,7 +28,7 @@ jobs:
 
       - name: install poetry
 #        run: pip3 install poetry
-        run: pipx install poetry
+        run: pipx install poetry==1.8.4
 
       - name: install dependencies
         run: poetry install
