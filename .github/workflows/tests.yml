@@ -47,9 +47,9 @@ jobs:
         run: poetry run pytest
 
 
-  allure_report:
-    runs-on: ubuntu-latest
-    needs: [ tests ]
+#  allure_report:
+#    runs-on: ubuntu-latest
+#    needs: [ tests ]
 
 
 
