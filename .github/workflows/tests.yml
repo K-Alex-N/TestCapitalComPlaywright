@@ -41,7 +41,7 @@ jobs:
 # https://allurereport.org/docs/integrations-github/#_2-enable-write-access-for-github-actions
   allure_report:
     runs-on: ubuntu-latest
-    needs: [ tests ]
+    needs: [ setup_and_test ]
     steps:
       - uses: actions/checkout@v3
       - name: Load test report history
