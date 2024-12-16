@@ -6,7 +6,8 @@ on:
 
 jobs:
 #  lint:
-  tests:
+
+  setup:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -27,7 +28,6 @@ jobs:
           pipx ensurepath
 
       - name: install poetry
-#        run: pip3 install poetry
         run: pipx install poetry==1.8.4
 
       - name: install dependencies
@@ -36,9 +36,18 @@ jobs:
       - name: run playwright
         run: poetry run playwright install
 
-      - name: run tests
-        run: poetry run pytest
+
+#  tests:
+#    needs: [setup]
+#      steps:
+#        - name: run tests
+#          run: poetry run pytest
+
+
+
 
 #  allure-report:
 #    needs: [tests]
+#      steps:
+#
 #      -
