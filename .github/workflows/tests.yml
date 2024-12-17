@@ -1,6 +1,6 @@
 name: run tests
 on:
-  push:
+  workflow_dispatch:
   schedule:
     - cron: "0 1 * * *"
 
@@ -100,7 +100,7 @@ jobs:
     needs: [ setup_and_test ]
 
     steps:
-      - name: 1. Get Allure history
+      - name: Get Allure history
         uses: actions/checkout@v4
         if: always()
         continue-on-error: true
@@ -108,7 +108,7 @@ jobs:
           ref: gh-pages
           path: gh-pages
 
-      - name: 2. Download Artifacts
+      - name: Download Artifacts
         uses: actions/download-artifact@v3
         id: download
         if: always()
@@ -117,7 +117,7 @@ jobs:
           name: allure-results
           path: allure-results
 
-      - name: 3. Generate allure report
+      - name: Generate allure report
         uses: simple-elf/allure-report-action@master
         if: always()
         id: allure-report
@@ -130,7 +130,7 @@ jobs:
           path: gh-pages
           keep_reports: 20
 
-      - name: 4. Deploy allure_report to Github Pages
+      - name: Deploy allure_report to Github Pages
         uses: peaceiris/actions-gh-pages@v3
         if: always()
         with:
