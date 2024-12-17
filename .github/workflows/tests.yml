@@ -38,7 +38,6 @@ jobs:
       - name: run tests
         run: poetry run pytest
 
-
 # https://allurereport.org/docs/integrations-github/#_2-enable-write-access-for-github-actions
   allure_report:
     runs-on: ubuntu-latest
