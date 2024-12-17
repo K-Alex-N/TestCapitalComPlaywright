@@ -58,14 +58,6 @@ jobs:
           ref: gh-pages
           path: gh-pages
 
-      - name: Build test report
-        uses: simple-elf/allure-report-action@v1.7
-        if: always()
-        with:
-          gh_pages: gh-pages
-          allure_history: allure-history
-          allure_results: allure-results
-
       - name: Download Artifacts
         uses: actions/download-artifact@v3
         id: download
@@ -74,6 +66,16 @@ jobs:
         with:
           name: allure-results
           path: allure-results
+
+      - name: Build test report
+        uses: simple-elf/allure-report-action@v1.7
+        if: always()
+        with:
+          gh_pages: gh-pages
+          allure_history: allure-history
+          allure_results: allure-results
+
+
 
 
 
