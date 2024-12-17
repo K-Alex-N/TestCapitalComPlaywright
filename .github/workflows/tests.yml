@@ -29,16 +29,16 @@ jobs:
       - name: install poetry
         run: pipx install poetry==1.8.4
 
-      - name: install dependencies
+      - name: Install dependencies
         run: poetry install --no-interaction --no-ansi
 
-      - name: run playwright
+      - name: Run playwright
         run: poetry run playwright install --with-deps
 
-      - name: run tests
+      - name: Run tests
         run: poetry run pytest
 
-      - name: 9. Upload artifact "allure-results"
+      - name: Upload artifact "allure-results"
         if: always()
         uses: actions/upload-artifact@v3
         with:
