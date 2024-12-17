@@ -38,6 +38,14 @@ jobs:
       - name: run tests
         run: poetry run pytest
 
+      - name: 9. Upload artifact "allure-results"
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: allure-results
+          path: allure-results/
+          retention-days: 1
+
 # https://allurereport.org/docs/integrations-github/#_2-enable-write-access-for-github-actions
 #  allure_report:
 #    runs-on: ubuntu-latest
