@@ -7,6 +7,7 @@ BROWSERS = ["chromium",
             "webkit"
             ]
 
+
 @pytest.fixture(scope="function", params=BROWSERS)
 def page(request):
     with sync_playwright() as playwright:
@@ -15,6 +16,11 @@ def page(request):
         context = browser.new_context()
         page = context.new_page()
         yield page
-        allure.attach(page.screenshot(), "screenshot", allure.attachment_type.PNG)
         context.close()
         browser.close()
+
+
+@pytest.fixture(autouse=True)
+def screenshot(page):
+    yield
+    allure.attach(page.screenshot(), "screenshot", allure.attachment_type.PNG)
