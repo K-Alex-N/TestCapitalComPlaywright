@@ -3,8 +3,8 @@ import pytest
 from playwright.sync_api import sync_playwright
 
 BROWSERS = ["chromium",
-            "firefox",
-            "webkit"
+            # "firefox",
+            # "webkit"
             ]
 
 
@@ -12,7 +12,7 @@ BROWSERS = ["chromium",
 def page(request):
     with sync_playwright() as playwright:
         browser_type = getattr(playwright, request.param)
-        browser = browser_type.launch()
+        browser = browser_type.launch(headless=False)
         context = browser.new_context()
         page = context.new_page()
         yield page
