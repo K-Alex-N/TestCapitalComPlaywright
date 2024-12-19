@@ -1,3 +1,4 @@
+import allure
 import pytest
 from playwright.sync_api import sync_playwright
 
@@ -7,11 +8,13 @@ BROWSERS = ["chromium",
             ]
 
 @pytest.fixture(scope="function", params=BROWSERS)
-def browser_context(request):
+def page(request):
     with sync_playwright() as playwright:
         browser_type = getattr(playwright, request.param)
         browser = browser_type.launch()
         context = browser.new_context()
-        yield context
+        page = context.new_page()
+        yield page
+        allure.attach(page.screenshot(), "screenshot", allure.attachment_type.PNG)
         context.close()
         browser.close()
