@@ -1,5 +1,7 @@
 import time
 
+from playwright.sync_api import Page
+
 from pages.bugs.bug516 import Bug516
 from pages.login_page import LoginPage
 import allure

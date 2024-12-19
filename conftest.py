@@ -12,7 +12,8 @@ BROWSERS = ["chromium",
 def page(request):
     with sync_playwright() as playwright:
         browser_type = getattr(playwright, request.param)
-        browser = browser_type.launch(headless=False)
+        browser = browser_type.launch()
+        # browser = browser_type.launch(headless=False)
         context = browser.new_context()
         page = context.new_page()
         yield page
