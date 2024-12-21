@@ -1,6 +1,7 @@
 import allure
 from playwright.sync_api import Page
 
+
 class BasePage:
     def __init__(self, page: Page):
         self.page = page
@@ -25,53 +26,37 @@ class BasePage:
         with allure.step(f"Hover over element -> {selector}"):
             self.page.locator(selector).hover()
 
+    def get_text(self, selector: str):
+        return self.page.locator(selector).text_content()
+
     def to_close_cookies_pop_up_window(self):
-        with allure.step("To close pop up window about cookies"):
+        with allure.step("Accept all cookies"):
             self.click('button#onetrust-accept-btn-handler')
 
     def search_and_open_an_article_in_market_analysis_page(self, part_of_article_title):
 
-        ARTICLE_LOCATOR = (By.XPATH, f"//div[@id='alc']//b[contains(text(), '{part_of_article_title}')]")
-        LOCATOR_LINK_NEXT_PAGE = (By.XPATH, '//a[@aria-label="Go to the next page"]')
-        LOCATOR_LAST_PAGE = (By.XPATH, '//a[@aria-label="Go to the next page"]/preceding::a[1]')
-        CLOSE_BLUE_BLOCK = (By.CSS_SELECTOR, "div.main_banner__niieI button")
+        ARTICLE_LOCATOR = f"//div[@id='alc']//b[contains(text(), '{part_of_article_title}')]"
+        LOCATOR_LINK_NEXT_PAGE = '//a[@aria-label="Go to the next page"]'
 
-
-        def get_last_page() -> int:
-            try:
-                last_page_obj = driver.find_element(*LOCATOR_LAST_PAGE)
-                last_page_number = int(last_page_obj.text)
-                return last_page_number
-            except:
-                raise Exception("Last page number was not found")
-
-        def is_article_present():
-            try:
-                driver.find_element(*ARTICLE_LOCATOR)
-                return True
-            except:
-                return False
-
-        def to_close_blue_block():
-            try:
-                driver.find_element(*CLOSE_BLUE_BLOCK).click()
-            except:
-                return
+        def is_article_present() -> bool:
+            return self.is_visible(ARTICLE_LOCATOR)
 
         def open_the_article():
-            to_close_blue_block()
-            driver.find_element(*ARTICLE_LOCATOR).click()
+            self.click(ARTICLE_LOCATOR)
 
         def go_to_next_page():
-            driver.find_element(*LOCATOR_LINK_NEXT_PAGE).click()
+            self.click(LOCATOR_LINK_NEXT_PAGE)
 
-        last_page = get_last_page()
+        def is_there_next_page() -> bool:
+            return self.is_visible(LOCATOR_LINK_NEXT_PAGE)
 
-        for _ in range(1, last_page + 1):
+        while True:
             if is_article_present():
                 open_the_article()
                 return
-            else:
-                go_to_next_page()
 
-        raise Exception(f"{last_page} pages were checked. Artile was not found.")
+            if is_there_next_page():
+                go_to_next_page()
+                continue
+
+            raise Exception("All pages were checked. Artile was not found.")
