@@ -24,6 +24,7 @@ import allure
 def test_bug516(page):
     bug = Bug516(page)
     page.add_locator_handler(page.locator('button#onetrust-accept-btn-handler'), bug.to_close_cookies_pop_up_window)
+    page.add_locator_handler(page.locator('div.ot-search-cntr'), bug.reload_page)
     bug.navigate_to("https://capital.com/en-gb")
     bug.open_market_analysis_page()
     bug.search_and_open_an_article_in_market_analysis_page("The graph (GRT) price prediction")

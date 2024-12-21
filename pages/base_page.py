@@ -33,6 +33,9 @@ class BasePage:
         with allure.step("Accept all cookies"):
             self.click('button#onetrust-accept-btn-handler')
 
+    def reload_page(self):
+        self.page.reload()
+
     def search_and_open_an_article_in_market_analysis_page(self, part_of_article_title):
 
         ARTICLE_LOCATOR = f"//div[@id='alc']//b[contains(text(), '{part_of_article_title}')]"
@@ -53,7 +56,7 @@ class BasePage:
         def is_there_next_page() -> bool:
             return self.is_visible(LOCATOR_LINK_NEXT_PAGE)
 
-        print(self.page.url)
+        self.page.wait_for_selector(LOCATOR_LINK_NEXT_PAGE)
         while True:
             print("1 ", is_article_present())
             # expect(self.page.locator(ARTICLE_LOCATOR)).to_be_visible(visible=True)
