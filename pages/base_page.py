@@ -1,5 +1,5 @@
 import allure
-from playwright.sync_api import Page
+from playwright.sync_api import Page, expect
 
 
 class BasePage:
@@ -20,7 +20,7 @@ class BasePage:
 
     def is_visible(self, selector: str) -> bool:
         with allure.step(f"Check if element is visible -> {selector}"):
-            return self.page.locator(selector).is_visible()
+            return self.page.locator(selector).is_visible(timeout=1000)
 
     def hover_over(self, selector: str):
         with allure.step(f"Hover over element -> {selector}"):
@@ -36,7 +36,10 @@ class BasePage:
     def search_and_open_an_article_in_market_analysis_page(self, part_of_article_title):
 
         ARTICLE_LOCATOR = f"//div[@id='alc']//b[contains(text(), '{part_of_article_title}')]"
-        LOCATOR_LINK_NEXT_PAGE = '//a[@aria-label="Go to the next page"]'
+        # LOCATOR_LINK_NEXT_PAGE = '//a[@aria-label="Go to the next page"]'
+        LOCATOR_LINK_NEXT_PAGE = '[aria-label="Go to the next page"]'
+        # div.ot-search-cntr
+
 
         def is_article_present() -> bool:
             return self.is_visible(ARTICLE_LOCATOR)
@@ -50,7 +53,11 @@ class BasePage:
         def is_there_next_page() -> bool:
             return self.is_visible(LOCATOR_LINK_NEXT_PAGE)
 
+        print(self.page.url)
         while True:
+            print("1 ", is_article_present())
+            # expect(self.page.locator(ARTICLE_LOCATOR)).to_be_visible(visible=True)
+            print("2 ", is_there_next_page())
             if is_article_present():
                 open_the_article()
                 return
@@ -58,5 +65,6 @@ class BasePage:
             if is_there_next_page():
                 go_to_next_page()
                 continue
+            break
 
-            raise Exception("All pages were checked. Artile was not found.")
+        raise Exception("All pages were checked. Artile was not found.")
