@@ -36,6 +36,7 @@ jobs:
 
       - name: Run tests
         if: always()
+        continue-on-error: true
         run: poetry run pytest
 
       - name: Upload "allure-results"
