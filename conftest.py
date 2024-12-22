@@ -36,3 +36,6 @@ def page(request):
 def screenshot(page):
     yield
     allure.attach(page.screenshot(), "screenshot", allure.attachment_type.PNG)
+
+
+# со Степика посмотреть настройки - https://stepik.org/lesson/826367/step/3?unit=829900
