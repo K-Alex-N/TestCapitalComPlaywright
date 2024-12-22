@@ -1,4 +1,0 @@
-"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
-"passed","Tue Dec 17 09:34:58 GMT 2024","Tue Dec 17 09:34:59 GMT 2024","407","test","test_first","","","","test_login[chromium]","description of test"
-"passed","Tue Dec 17 09:35:02 GMT 2024","Tue Dec 17 09:35:03 GMT 2024","1082","test","test_first","","","","test_login[webkit]","description of test"
-"passed","Tue Dec 17 09:34:59 GMT 2024","Tue Dec 17 09:35:01 GMT 2024","1306","test","test_first","","","","test_login[firefox]","description of test"
