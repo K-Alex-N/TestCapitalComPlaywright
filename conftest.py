@@ -39,3 +39,8 @@ def screenshot(page):
 
 
 # со Степика посмотреть настройки - https://stepik.org/lesson/826367/step/3?unit=829900
+# https://stepik.org/lesson/826369/step/2?unit=829902
+# https://stepik.org/lesson/826356/step/7?unit=829889
+# https://stepik.org/lesson/826356/step/8?unit=829889
+# https://stepik.org/lesson/826356/step/11?unit=829889
+# https://stepik.org/lesson/826357/step/1?unit=829890
