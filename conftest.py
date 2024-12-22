@@ -10,8 +10,8 @@ BROWSERS = [
     # "webkit"
 ]
 
-HEADLESS=False
-# HEADLESS=True
+# HEADLESS=False
+HEADLESS=True
 
 @pytest.fixture(scope="function", params=BROWSERS)
 def page(request):
