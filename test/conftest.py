@@ -1,2 +1,0 @@
-HEADLESS=False
-# HEADLESS=True

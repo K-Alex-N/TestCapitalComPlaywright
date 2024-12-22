@@ -2,6 +2,7 @@ allure-results
 reports
 trace
 trace.zip
+local_settings.py
 
 
 

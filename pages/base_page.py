@@ -33,9 +33,6 @@ class BasePage:
         with allure.step("Accept all cookies"):
             self.click('button#onetrust-accept-btn-handler')
 
-    # def reload_page(self):
-    #     self.page.reload()
-
     def search_and_open_an_article_in_market_analysis_page(self, part_of_article_title):
 
         ARTICLE_LOCATOR = f"//div[@id='alc']//b[contains(text(), '{part_of_article_title}')]"

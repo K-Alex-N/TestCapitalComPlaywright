@@ -1,3 +1,4 @@
+import os
 import time
 
 import allure
@@ -10,6 +11,12 @@ BROWSERS = [
     "webkit"
 ]
 
+HEADLESS = True
+if os.path.isfile(os.path.join(os.path.dirname(__file__), 'local_settings.py')):
+    import local_settings
+
+    HEADLESS = local_settings.HEADLESS
+
 
 @pytest.fixture(scope="function", params=BROWSERS)
 def page(request):
@@ -19,7 +26,6 @@ def page(request):
         context = browser.new_context()
         # context.tracing.start(screenshots=True, snapshots=True)
         page = context.new_page()
-        time.sleep(4)
         yield page
         # context.tracing.stop(path=f"trace_{page}.zip")
         context.close()
