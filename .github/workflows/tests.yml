@@ -35,6 +35,7 @@ jobs:
         run: poetry run playwright install --with-deps
 
       - name: Run tests
+        if: always()
         run: poetry run pytest
 
       - name: Upload "allure-results"
