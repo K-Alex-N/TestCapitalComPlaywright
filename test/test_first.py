@@ -21,11 +21,12 @@ import allure
 #     # assert False
 
 
-def test_bug516(page):
+def test_bug516(page: Page):
     bug = Bug516(page)
     # page.add_locator_handler(page.locator('button#onetrust-accept-btn-handler'), bug.to_close_cookies_pop_up_window)
     # как нибудь затем потестить сколько времени будет тратиться если просто ждать Поп-ап окно
     # page.add_locator_handler(page.locator('div.ot-search-cntr'), bug.reload_page)
+    # page.opener()
     bug.navigate_to("https://capital.com/en-gb")
     bug.to_close_cookies_pop_up_window()
     bug.open_market_analysis_page()
