@@ -20,7 +20,7 @@ class BasePage:
 
     def is_visible(self, selector: str) -> bool:
         with allure.step(f"Check if element is visible -> {selector}"):
-            return self.page.locator(selector).is_visible(timeout=1000)
+            return self.page.locator(selector).is_visible()
 
     def hover_over(self, selector: str):
         with allure.step(f"Hover over element -> {selector}"):
