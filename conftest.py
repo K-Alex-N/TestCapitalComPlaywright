@@ -6,12 +6,10 @@ from playwright.sync_api import sync_playwright
 
 BROWSERS = [
     "chromium",
-    # "firefox",
-    # "webkit"
+    "firefox",
+    "webkit"
 ]
 
-# HEADLESS=False
-HEADLESS=True
 
 @pytest.fixture(scope="function", params=BROWSERS)
 def page(request):
