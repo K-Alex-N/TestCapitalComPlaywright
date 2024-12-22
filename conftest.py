@@ -44,3 +44,4 @@ def screenshot(page):
 # https://stepik.org/lesson/826356/step/8?unit=829889
 # https://stepik.org/lesson/826356/step/11?unit=829889
 # https://stepik.org/lesson/826357/step/1?unit=829890
+# https://stepik.org/lesson/825696/step/2?unit=829210
