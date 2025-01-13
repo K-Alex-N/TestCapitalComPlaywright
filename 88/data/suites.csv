@@ -1,0 +1,4 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"description of test","548","test_login[chromium]","test","Mon Jan 13 02:19:36 GMT 2025","passed","Mon Jan 13 02:19:37 GMT 2025","","test_first","",""
+"description of test","713","test_login[firefox]","test","Mon Jan 13 02:19:38 GMT 2025","passed","Mon Jan 13 02:19:39 GMT 2025","","test_first","",""
+"description of test","1631","test_login[webkit]","test","Mon Jan 13 02:19:44 GMT 2025","passed","Mon Jan 13 02:19:45 GMT 2025","","test_first","",""
