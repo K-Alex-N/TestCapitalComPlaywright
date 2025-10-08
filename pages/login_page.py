@@ -14,11 +14,6 @@ class LoginPage(BasePage):
         with allure.step("Initialize LoginPage"):
             super().__init__(page)
 
-    # мб сделать вот так
-    # def navigate(self):
-    #     """Открывает страницу логина."""
-    #     self.page.goto('https://zimaev.github.io/pom/')
-
     def login(self, username: str, password: str):
         with allure.step("Perform login"):
             self.fill_input(Locators.USERNAME_INPUT, username)
