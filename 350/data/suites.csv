@@ -1,4 +1,0 @@
-"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
-"description of test","920","test_login[firefox]","test","Thu Mar 26 04:35:03 UTC 2026","passed","Thu Mar 26 04:35:04 UTC 2026","","test_first","",""
-"description of test","639","test_login[chromium]","test","Thu Mar 26 04:35:01 UTC 2026","passed","Thu Mar 26 04:35:02 UTC 2026","","test_first","",""
-"description of test","725","test_login[webkit]","test","Thu Mar 26 04:35:06 UTC 2026","passed","Thu Mar 26 04:35:06 UTC 2026","","test_first","",""
